@@ -163,7 +163,43 @@ html.anim body,html.anim .bar,html.anim footer,html.anim .row,html.anim .date in
     <h2>The studio</h2>
     <p class="sub">Come in for a studio session, or we shoot on location. Backdrops, lights and props are ready.</p>
     <div class="studio" id="studio"></div>
-  </div></section>
+  
+<!-- KJ studio directions -->
+<style>
+.kj-find{width:min(1000px,calc(100% - 2rem));margin:2.5rem auto 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(1rem,3vw,2rem);align-items:stretch;}
+.kj-find__info{display:flex;flex-direction:column;justify-content:center;gap:.9rem;padding:.25rem 0;}
+.kj-find__info h3{margin:0;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.2;}
+.kj-find__info p{margin:0;opacity:.85;line-height:1.55;}
+.kj-find__meta{display:grid;gap:.35rem;margin:0;padding:0;list-style:none;}
+.kj-find__meta li{display:flex;gap:.5rem;align-items:baseline;}
+.kj-find__meta strong{min-width:4.5rem;opacity:.6;font-weight:500;}
+.kj-find__btn{align-self:flex-start;display:inline-block;padding:.8rem 1.4rem;border-radius:6px;background:var(--accent,#f5b800);color:var(--accent-ink,#111);font-weight:600;text-decoration:none;transition:transform .2s,opacity .2s;}
+.kj-find__btn:hover{transform:translateY(-2px);opacity:.92;}
+.kj-find__map{position:relative;min-height:280px;height:clamp(280px,40vw,440px);border-radius:12px;overflow:hidden;border:1px solid rgba(128,128,128,.35);background:#0b1118;}
+.kj-find__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+.kj-find__chip{position:absolute;left:.75rem;bottom:.75rem;z-index:2;padding:.5rem .9rem;border-radius:999px;background:#fff;color:#000;font-size:.85rem;font-weight:600;line-height:1;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+.kj-find__chip:hover{opacity:.88;}
+@media (max-width:820px){
+  .kj-find{grid-template-columns:1fr;}
+  .kj-find__map{order:2;height:clamp(260px,62vw,380px);min-height:260px;}
+  .kj-find__btn{align-self:stretch;text-align:center;}
+}
+</style>
+<div class="kj-find" id="directions">
+  <div class="kj-find__info">
+    <h3>Visit the studio</h3>
+    <p>Come and see the sets in person. Tap the button for turn-by-turn directions in Google Maps.</p>
+    <ul class="kj-find__meta">
+      <li><strong>Where</strong><span>Kikuyu Town, Kenya</span></li>
+      <li><strong>Open</strong><span>Mon&ndash;Sat, 9am to 6pm</span></li>
+    </ul>
+    <a class="kj-find__btn" href="https://maps.app.goo.gl/R7fPpaZc2EvMGSq86" target="_blank" rel="noopener noreferrer">Get directions &#8599;</a>
+  </div>
+  <div class="kj-find__map">
+    <iframe src="https://maps.google.com/maps?q=-1.2456009,36.6628733&t=k&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="KJ Visual Studios location (satellite map)"></iframe>
+    <a class="kj-find__chip" href="https://maps.app.goo.gl/R7fPpaZc2EvMGSq86" target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
+  </div>
+</div></div></section>
 </main>
 
 <footer id="contact"><div class="wrap foot">
@@ -174,21 +210,7 @@ html.anim body,html.anim .bar,html.anim footer,html.anim .row,html.anim .date in
   </div>
   <div class="spot" id="spot"></div>
   <small id="copy"></small>
-</div><!-- KJ satellite map -->
-<style>
-.kj-map{width:min(1000px,calc(100% - 2rem));margin:2.5rem auto;grid-column:1/-1;flex:0 0 100%;}
-.kj-map__frame{position:relative;width:100%;height:clamp(260px,42vw,420px);border-radius:12px;overflow:hidden;border:1px solid rgba(128,128,128,.35);background:#0b1118;}
-.kj-map__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
-.kj-map__link{position:absolute;left:.75rem;bottom:.75rem;z-index:2;display:inline-block;padding:.6rem 1rem;border-radius:999px;background:#fff;color:#000;font-size:.9rem;font-weight:600;line-height:1;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.35);}
-.kj-map__link:hover{opacity:.88;}
-</style>
-<div class="kj-map" id="location">
-  <div class="kj-map__frame">
-    <iframe src="https://maps.google.com/maps?q=-1.2456009,36.6628733&t=k&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="KJ Visual Studios location (satellite map)"></iframe>
-    <a class="kj-map__link" href="https://maps.app.goo.gl/R7fPpaZc2EvMGSq86" target="_blank" rel="noopener noreferrer">Get directions &#8599;</a>
-  </div>
-</div>
-</footer>
+</div></footer>
 
 <a class="float" id="floatWa" href="#" aria-label="Chat on WhatsApp">WhatsApp</a>
 
@@ -225,7 +247,7 @@ const wa = text => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(tex
 document.title = site.name + " | Photography";
 $("logo").textContent = site.name; $("name").textContent = site.name; $("tagline").textContent = site.tagline;
 $("hours").textContent = site.hours;
-$("copy").textContent = `© ${new Date().getFullYear()} ${site.name}`;
+$("copy").textContent = `© ${new Date().getFullYear()} ${site.name}`; $("copy").insertAdjacentHTML("beforeend", " &middot; <a href=\"terms.html\" style=\"color:inherit;text-decoration:underline\">Terms &amp; Conditions</a>");
 
 const palette = [["#3b5568","#1d2c38"],["#8a6f4d","#3e2f1f"],["#5d7a6a","#22352b"],["#6b5a7a","#2c2338"],["#7a5a5a","#35201f"],["#4f6b8a","#1f2e40"]];
 function frame(i){
@@ -261,7 +283,7 @@ $("when").addEventListener("change", refresh); refresh();
 const lab=()=>b.setAttribute("aria-label",r.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode");lab();
 b.addEventListener("click",()=>{const n=r.dataset.theme==="dark"?"light":"dark";r.classList.add("anim");r.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}lab();setTimeout(()=>r.classList.remove("anim"),450)});})();
 
-$("socials").innerHTML = site.socials.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join("") + `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.name + " " + site.location)}" target="_blank" rel="noopener">Get Directions</a>`;
+$("socials").innerHTML = site.socials.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join("");
 </script>
 </body>
 </html>
