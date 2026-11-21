@@ -174,7 +174,21 @@ html.anim body,html.anim .bar,html.anim footer,html.anim .row,html.anim .date in
   </div>
   <div class="spot" id="spot"></div>
   <small id="copy"></small>
-</div></footer>
+</div><!-- KJ satellite map -->
+<style>
+.kj-map{width:min(1000px,calc(100% - 2rem));margin:2.5rem auto;grid-column:1/-1;flex:0 0 100%;}
+.kj-map__frame{position:relative;width:100%;height:clamp(260px,42vw,420px);border-radius:12px;overflow:hidden;border:1px solid rgba(128,128,128,.35);background:#0b1118;}
+.kj-map__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+.kj-map__link{position:absolute;left:.75rem;bottom:.75rem;z-index:2;display:inline-block;padding:.6rem 1rem;border-radius:999px;background:#fff;color:#000;font-size:.9rem;font-weight:600;line-height:1;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+.kj-map__link:hover{opacity:.88;}
+</style>
+<div class="kj-map" id="location">
+  <div class="kj-map__frame">
+    <iframe src="https://maps.google.com/maps?q=-1.2456009,36.6628733&t=k&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="KJ Visual Studios location (satellite map)"></iframe>
+    <a class="kj-map__link" href="https://maps.app.goo.gl/R7fPpaZc2EvMGSq86" target="_blank" rel="noopener noreferrer">Get directions &#8599;</a>
+  </div>
+</div>
+</footer>
 
 <a class="float" id="floatWa" href="#" aria-label="Chat on WhatsApp">WhatsApp</a>
 
