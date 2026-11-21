@@ -127,7 +127,28 @@ html.anim body,html.anim .bar,html.anim footer,html.anim .row,html.anim .date in
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.theme,.theme *,.ghost::after,footer .links a,.float{transition:none}.btn::after,.float,.float::before{animation:none!important}}
 </style>
 <script>(function(){var d=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light',t=d;try{t=localStorage.getItem('theme')||d}catch(e){}document.documentElement.dataset.theme=t})();</script>
-</head>
+
+<!-- kj-cta-anim -->
+<style>
+@keyframes kjRing{
+  0%{box-shadow:0 0 0 0 rgba(245,184,0,.55);}
+  70%{box-shadow:0 0 0 14px rgba(245,184,0,0);}
+  100%{box-shadow:0 0 0 0 rgba(245,184,0,0);}
+}
+@keyframes kjShine{
+  0%,60%{transform:translateX(-130%) skewX(-20deg);}
+  100%{transform:translateX(230%) skewX(-20deg);}
+}
+.btn:not(.ghost){animation:kjRing 2.8s ease-out infinite;}
+.btn:not(.ghost):hover,.btn:not(.ghost):focus-visible{animation-play-state:paused;}
+.kj-find__btn{position:relative;overflow:hidden;isolation:isolate;}
+.kj-find__btn::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:kjShine 3.2s ease-in-out infinite;pointer-events:none;}
+.kj-find__btn:active,.btn:active,footer .links a:active{transform:scale(.97);}
+@media (prefers-reduced-motion:reduce){
+  .btn:not(.ghost),.kj-find__btn::before{animation:none!important;}
+  .kj-find__btn:active,.btn:active,footer .links a:active{transform:none;}
+}
+</style></head>
 <body>
 <header class="bar"><div class="wrap">
   <a class="logo" href="#top" id="logo"></a>
