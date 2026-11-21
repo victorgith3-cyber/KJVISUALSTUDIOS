@@ -194,6 +194,22 @@ html.anim body,html.anim .bar,html.anim footer,html.anim .row,html.anim .date in
       <li><strong>Open</strong><span>Mon&ndash;Sat, 9am to 6pm</span></li>
     </ul>
     <a class="kj-find__btn" href="https://maps.app.goo.gl/R7fPpaZc2EvMGSq86" target="_blank" rel="noopener noreferrer">Get directions &#8599;</a>
+    <a class="kj-find__apple" id="kjApple" hidden href="https://maps.apple.com/?daddr=-1.2456009,36.6628733&amp;dirflg=d&amp;q=KJ%20Visual%20Studios" target="_blank" rel="noopener noreferrer">Prefer Apple Maps? Open directions &#8599;</a>
+    <style>
+    .kj-find__apple{align-self:flex-start;font-size:.9rem;color:inherit;opacity:.8;text-decoration:underline;text-underline-offset:3px;}
+    .kj-find__apple:hover{opacity:1;}
+    .kj-find__apple[hidden]{display:none;}
+    @media (max-width:820px){.kj-find__apple{align-self:center;text-align:center;}}
+    </style>
+    <script>
+    (function(){
+      try{
+        var ua = navigator.userAgent || "";
+        var isApple = /iPhone|iPad|iPod|Macintosh/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        if(isApple){ var a = document.getElementById("kjApple"); if(a) a.hidden = false; }
+      }catch(e){}
+    })();
+    </script>
   </div>
   <div class="kj-find__map">
     <iframe src="https://maps.google.com/maps?q=-1.2456009,36.6628733&t=k&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="KJ Visual Studios location (satellite map)"></iframe>
